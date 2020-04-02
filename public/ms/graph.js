@@ -6,7 +6,8 @@
 const options =
   new MicrosoftGraph.MSALAuthenticationProviderOptions([
     'user.read',
-    'calendars.read'
+    'calendars.read',
+    'mail.read',
   ]);
 // Create an authentication provider for the implicit flow
 const authProvider =
@@ -20,15 +21,11 @@ const graphClient = MicrosoftGraph.Client.initWithMiddleware({
 // <getEvents>
 async function getEvents() {
   try {
-    let events = await graphClient
-      .api('/me/events')
-      .select('subject,organizer,start,end')
-      .orderby('createdDateTime DESC')
+    let res = await graphClient.api('/me/mailFolders/inbox/messages').filter('isRead eq false')
       .get();
-    // let res = await graphClient.api('/me/messages')
-    //   .select('sender,subject')
-    //   .get();
-    updatePage(msalClient.getAccount(), Views.calendar, events);
+      console.log("done boiii");
+    // updatePage(msalClient.getAccount(), Views.calender, events);
+    updatePage(msalClient.getAccount(), Views.email, res);
   } catch (error) {
     updatePage(msalClient.getAccount(), Views.error, {
       message: 'Error getting events',

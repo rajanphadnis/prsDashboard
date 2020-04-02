@@ -1,9 +1,13 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="./style.css" />
     <title>
         PRS Dashboard
@@ -25,16 +29,57 @@
             </div>
             <div class="col">
                 <div id="mail" class="neumorphic">
-                    <iframe src="https://prsdashboard.firebaseapp.com/ms/" width="100%"></iframe>
-                    <p>Mail</p>
+                    <p>Unread Mail</p>
+                    <div id="mailContents">
+                        <button id="connect" class="btn btn-primary btn-large" onclick="getEvents();">Authorize</button>
+                        <div id="logout" style="display: none;">
+                            <button class="btn btn-primary btn-large" onclick="getEvents();">Refresh</button>
+                            <button class="btn btn-primary btn-large" onclick="signOut();">Logout</button>
+                        </div>
+
+                        <main id="main-container" role="main" class="container"></main>
+                        <!-- <button class="btn btn-primary btn-large" onclick="signIn();">Connect</button> -->
+                    </div>
                 </div>
-                <!-- <div id="drive" class="neumorphic">
+                <div id="drive" class="neumorphic">
+                    <p>Drive</p>
                     <iframe src="" width="100%"></iframe>
-                    <p>Mail</p>
-                </div> -->
+                </div>
                 <p>drive, mail integrations go here</p>
             </div>
         </div>
     </div>
 
 </body>
+<!-- Bootstrap/jQuery -->
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+<!-- Moment.js -->
+<script src="https://cdn.jsdelivr.net/npm/moment@2.24.0/moment.min.js"></script>
+
+<!-- MSAL -->
+<script src="https://cdn.jsdelivr.net/npm/bluebird@3.7.2/js/browser/bluebird.min.js"></script>
+<script src="https://alcdn.msftauth.net/lib/1.2.1/js/msal.js"
+    integrity="sha384-9TV1245fz+BaI+VvCjMYL0YDMElLBwNS84v3mY57pXNOt6xcUYch2QLImaTahcOP"
+    crossorigin="anonymous"></script>
+
+<!-- Graph SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@microsoft/microsoft-graph-client/lib/graph-js-sdk.js"></script>
+
+<script src="/ms/config.js"></script>
+<script src="/ms/ui.js"></script>
+<script src="/ms/auth.js"></script>
+<script src="/ms/graph.js"></script>
+<script>
+    getEvents();
+</script>
+
+</html>

@@ -1,7 +1,7 @@
 const msalConfig = {
     auth: {
         clientId: 'dd514ae7-1256-4b08-8e56-b4336d9143a2',
-        redirectUri: 'https://prsdashboard.firebaseapp.com/ms.html'
+        redirectUri: 'http://localhost:5000'
     },
     cache: {
         cacheLocation: "sessionStorage",
@@ -15,6 +15,7 @@ const loginRequest = {
         'openid',
         'profile',
         'user.read',
-        'calendars.read'
+        'calendars.read',
+        'mail.read',
     ]
 }
