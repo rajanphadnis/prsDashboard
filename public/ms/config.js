@@ -1,7 +1,7 @@
 const msalConfig = {
     auth: {
         clientId: 'dd514ae7-1256-4b08-8e56-b4336d9143a2',
-        redirectUri: 'https://prsdashboard.firebaseapp.com'
+        redirectUri: 'https://prsdashboard.firebaseapp.com/',
     },
     cache: {
         cacheLocation: "sessionStorage",

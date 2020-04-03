@@ -157,3 +157,28 @@ textarea:focus, input:focus{
   align-items: center;
   justify-content: start;
 }
+
+
+
+#popUpBox {
+  z-index: 1000;
+  display: none;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  min-width: 80%;
+  height: 75%;
+  position: fixed;
+  background-color: #e0e0e0;
+  color: black;
+  overflow: auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 3px 3px 6px 0 rgba(0, 0, 0, 0.2),
+    -3px -3px 6px 0 rgba(255, 255, 255, 0.5);
+}
+#popUp {
+  width: 100%;
+  height: calc(100% - 50px);
+}

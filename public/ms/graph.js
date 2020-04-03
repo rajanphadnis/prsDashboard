@@ -39,8 +39,13 @@ async function getMessage(keyg) {
   try {
     let res = await graphClient.api('/me/messages/' + keyg)
       .get();
-      console.log(res.body.content);
-      document.getElementById("test").innerHTML = res.body.content
+      // console.log(res.body.content);
+      // document.getElementById("popUp").src = res.body.content;
+      document.getElementById("popUpBox").style.display = "block";
+      var iframe = document.getElementById('popUp'),
+    iframedoc = iframe.contentDocument || iframe.contentWindow.document;
+
+iframedoc.body.innerHTML = res.body.content;
     // updatePage(msalClient.getAccount(), Views.calender, events);
     // updatePage(msalClient.getAccount(), Views.email, res);
   } catch (error) {
@@ -50,21 +55,29 @@ async function getMessage(keyg) {
     });
   }
 }
+
+function buildList(emails) {
+  var div = document.createElement('div');
+  div.className = "emailPanel";
+  for (mail of emails) {
+    var emailPanel = document.createElement("div");
+    emailPanel.className = "mailPanel";
+    emailPanel.innerHTML = "<a id=" + mail.id + " onclick='getMessage(this.id);' class='nameTitle'>" + mail.sender.emailAddress.name + "</a></br><span class='subjectTitle'>" + mail.subject + "</span>";
+    div.appendChild(emailPanel);
+  }
+  document.getElementById("mailSuggestion").appendChild(div);
+}
+
 async function searchMail() {
   document.getElementById("mailSuggestion").innerHTML = 'No Results found';
   document.getElementById("googleSuggestion").innerHTML = "<a href=https://www.google.com/search?q=" + encodeURIComponent(document.getElementById("searchBar").value) + " target='_blank' > Search for '" + document.getElementById("searchBar").value + "'</a>";
   console.log("search go");
+  var query = document.getElementById("searchBar").value;
   try {
-    let s = await graphClient.api('/me/messages')
-	.search(document.getElementById("searchBar").value).top(3)
-	.get();
-      console.log("leeeee");
-      document.getElementById("mailSuggestion").innerHTML = '';
-      for (term of s.value) {
-        // document.getElementById("mailSuggestion").innerHTML = '';
-        document.getElementById("mailSuggestion").innerHTML = document.getElementById("mailSuggestion").innerHTML + term.sender.emailAddress.name + "</br>" + term.subject + "</br>" + "</br>";
-      }
-      // document.getElementById("test").innerHTML = s.value
+    let s = await graphClient.api('/me/messages').search('"body:' + query.toString() + '"').top(3).get();
+    console.log("'searched for: " + query + "'");
+    document.getElementById("mailSuggestion").innerHTML = '';
+    buildList(s.value);
   } catch (error) {
     console.log("error: " + error);
   }

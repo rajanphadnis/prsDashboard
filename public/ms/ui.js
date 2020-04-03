@@ -5,6 +5,9 @@ document.getElementById("searchBar").addEventListener("focusin", function() {
 document.getElementById("bodyColumns").addEventListener("click", function() {
   document.getElementById("searchSuggestion").style.display = "none";
 });
+document.getElementById("popUpBoxClose").addEventListener("click", function() {
+  document.getElementById("popUpBox").style.display = "none";
+});
 const Views = { error: 1, home: 2, calendar: 3 , email: 4};
 
 function createElement(type, className, text) {
