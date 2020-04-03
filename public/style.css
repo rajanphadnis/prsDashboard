@@ -109,7 +109,7 @@ body {
 }
 .emailPanel {
   overflow: auto;
-  max-height: 170px;
+  max-height: 200px;
 }
 #search {
   padding-top: 15px;
