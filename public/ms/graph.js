@@ -6,7 +6,6 @@
 const options =
   new MicrosoftGraph.MSALAuthenticationProviderOptions([
     'user.read',
-    'calendars.read',
     'mail.read',
   ]);
 // Create an authentication provider for the implicit flow

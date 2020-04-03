@@ -15,7 +15,6 @@ const loginRequest = {
         'openid',
         'profile',
         'user.read',
-        'calendars.read',
         'mail.read',
     ]
 }
