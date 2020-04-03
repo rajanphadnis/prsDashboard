@@ -1,5 +1,10 @@
 const mainContainer = document.getElementById('main-container');
-
+document.getElementById("searchBar").addEventListener("focusin", function() {
+  document.getElementById("searchSuggestion").style.display = "block";
+});
+document.getElementById("bodyColumns").addEventListener("click", function() {
+  document.getElementById("searchSuggestion").style.display = "none";
+});
 const Views = { error: 1, home: 2, calendar: 3 , email: 4};
 
 function createElement(type, className, text) {
@@ -61,6 +66,7 @@ function showError(error) {
 }
 function showEmail(events) {
   var div = document.createElement('div');
+  div.className = "emailPanel";
 
   var table = createElement('table', 'table');
   div.appendChild(table);
@@ -79,8 +85,8 @@ function showEmail(events) {
     tbody.appendChild(eventrow);
 
     var emailPanel = document.createElement("div");
-    emailPanel.className = "emailPanel";
-    emailPanel.innerHTML = "<h5>" + mail.sender.emailAddress.name + "</h5>" + mail.sender.emailAddress.address + "</br>" + mail.subject;
+    emailPanel.className = "mailPanel";
+    emailPanel.innerHTML = "<a id=" + mail.id + " onclick='getMessage(this.id);' class='nameTitle'>" + mail.sender.emailAddress.name + "</a></br><span class='subjectTitle'>" + mail.subject + "</span>";
     eventrow.appendChild(emailPanel);
     
   }
