@@ -75,7 +75,29 @@
                 </div>
                 <div id="drive" class="neumorphic">
                     <p>Drive</p>
-                    <iframe src="" width="100%"></iframe>
+                    <!--TODO, IMPLEMENT THE PICKER
+                    have the button run a script that accesses picker.js and runs functions from there
+                    -->
+                    <button onclick="showPickerDialog()" >Show Picker Dialog</button>
+
+                        
+                    <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+                    <script>
+                    function showPickerDialog(){
+                        loadPicker()
+                    }
+                    </script>
+                    <!-- <iframe src="" width="100%">
+                        <button onclick="showPickerDialog()" src="picker.js">Show Picker Dialog</button>
+
+                        
+                        <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
+                        <script>
+                        function showPickerDialog(){
+                            loadPicker()
+                        }
+                        </script>
+                    </iframe> -->
                 </div>
                 <p>integrations: drive, mail, turnitin, scoir, graphing calc?</p>
             </div>
