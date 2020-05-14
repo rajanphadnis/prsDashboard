@@ -10,6 +10,7 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.1/css/all.css" crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="./style.css" />
+    <script src="https://apis.google.com/js/api.js"></script>
     <title>
         PRS Dashboard
     </title>
@@ -20,7 +21,7 @@
     <div id="mainBody">
         <div id="header">
             <div id="search">
-                <input id="searchBar" onchange="searchMail();" type="text"
+                <input id="searchBar" autocomplete="off" onchange="searchMail();" type="text"
                     placeholder="Search Drive, Mail, Contacts, the Interwebs...">
 
             </div>
@@ -51,6 +52,7 @@
         <div id="bodyColumns">
             <div class="col" id="test">
                 <p>classes go here</p>
+                <!-- <iframe src="https://pacificridge.learning.powerschool.com"></iframe> -->
             </div>
             <div class="col">
                 <p>calendar goes here</p>
@@ -75,30 +77,9 @@
                     </div>
                 </div>
                 <div id="drive" class="neumorphic">
-                    <p>Drive</p>
-                    <!--TODO, IMPLEMENT THE PICKER
-                    have the button run a script that accesses picker.js and runs functions from there
-                    -->
-                    <button onclick="loadPicker();">Show Picker Dialog</button>
-
-
-                    <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
-                    <script>
-                        function showPickerDialog() {
-                            loadPicker()
-                        }
-                    </script>
-                    <!-- <iframe src="" width="100%">
-                        <button onclick="showPickerDialog()" src="picker.js">Show Picker Dialog</button>
-
-                        
-                        <script type="text/javascript" src="https://apis.google.com/js/api.js"></script>
-                        <script>
-                        function showPickerDialog(){
-                            loadPicker()
-                        }
-                        </script>
-                    </iframe> -->
+                    <p>Most Recent Files - Google Drive</p>
+                    <button id="driveAuthB" onclick="authenticate().then(loadClient)" class="btn btn-primary btn-large">Authorize</button>
+                    <div id="driveRecent"></div>
                 </div>
                 <p>integrations: drive, mail, turnitin, scoir, graphing calc?</p>
             </div>
@@ -133,7 +114,8 @@
 <script src="/ms/ui.js"></script>
 <script src="/ms/auth.js"></script>
 <script src="/ms/graph.js"></script>
-<script src="/picker.js"></script>
+<!-- <script src="/picker.js"></script> -->
+
 <script>
     getEvents();
 </script>

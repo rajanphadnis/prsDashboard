@@ -99,7 +99,8 @@ body {
   margin: 0%;
   margin-bottom: 10px;
   margin-top: 10px;
-  padding: 0%
+  padding: 0%;
+  cursor: pointer;
 }
 .nameTitle {
   font-weight: bold;
@@ -181,4 +182,29 @@ textarea:focus, input:focus{
 #popUp {
   width: 100%;
   height: calc(100% - 50px);
+}
+.driveDiv {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.driveDiv img {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+#driveRecent {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+}
+.table {
+  cursor: pointer;
+}
+.filePanel a{
+  color: black;
+  text-decoration: none;
 }
